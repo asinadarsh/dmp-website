@@ -32,13 +32,17 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 });
 
 // ===== FORM SUCCESS MESSAGE =====
-if (window.location.search.includes('sent=1')) {
-  const msg = document.getElementById('success-msg');
-  if (msg) {
-    msg.style.display = 'block';
-    window.scrollTo({ top: document.getElementById('success-msg').offsetTop - 120, behavior: 'smooth' });
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.location.search.includes('sent=1')) {
+    const msg = document.getElementById('success-msg');
+    if (msg) {
+      msg.style.display = 'block';
+      setTimeout(() => {
+        msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 800);
+    }
   }
-}
+});
 
 // ===== SCROLL FADE-IN =====
 const observer = new IntersectionObserver((entries) => {
