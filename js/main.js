@@ -1,15 +1,20 @@
-// Mobile navigation toggle
+// ===== PRELOADER =====
+const preloader = document.getElementById('preloader');
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    preloader.classList.add('hidden');
+  }, 600);
+});
+
+// ===== MOBILE NAV =====
 const toggle = document.querySelector('.nav-toggle');
 const links = document.querySelector('.nav-links');
 
 if (toggle && links) {
   toggle.addEventListener('click', () => {
     links.classList.toggle('open');
-    const expanded = links.classList.contains('open');
-    toggle.setAttribute('aria-expanded', expanded);
+    toggle.setAttribute('aria-expanded', links.classList.contains('open'));
   });
-
-  // Close on outside click
   document.addEventListener('click', (e) => {
     if (!toggle.contains(e.target) && !links.contains(e.target)) {
       links.classList.remove('open');
@@ -17,7 +22,7 @@ if (toggle && links) {
   });
 }
 
-// Highlight active nav link
+// ===== ACTIVE NAV LINK =====
 const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 document.querySelectorAll('.nav-links a').forEach(link => {
   const href = link.getAttribute('href');
@@ -25,3 +30,15 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     link.classList.add('active');
   }
 });
+
+// ===== SCROLL FADE-IN =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
