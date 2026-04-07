@@ -121,7 +121,7 @@
           <form action="https://formsubmit.co/contact@floramie.co.uk" method="POST">
             <!-- FormSubmit config -->
             <input type="hidden" name="_subject" value="New Enquiry — Digital Marketing Professionals Ltd" />
-            <input type="hidden" name="_next" value="https://formsubmit.co/ajax/contact@floramie.co.uk" />
+            <input type="hidden" name="_next" value="https://floramie.co.uk/contact.html?sent=1" />
             <input type="hidden" name="_template" value="table" />
             <input type="hidden" name="_captcha" value="true" />
             <input type="text" name="_honey" style="display:none" />
@@ -163,6 +163,9 @@
             <div class="form-group">
               <label for="message">Your Message *</label>
               <textarea id="message" name="Message" placeholder="Please describe your requirements, project, or any questions you have..." required></textarea>
+            </div>
+            <div id="success-msg" style="display:none; background:#e8f5e9; border:1px solid #a5d6a7; border-radius:8px; padding:14px 18px; color:#2e7d32; font-size:0.93rem; margin-bottom:14px;">
+              ✅ Message sent! We'll get back to you within one business day.
             </div>
             <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 15px;">
               Send Message →
